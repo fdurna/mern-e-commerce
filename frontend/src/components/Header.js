@@ -5,23 +5,23 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 const Header = () => {
     return (
         <header>
-            <Navbar bg="dark" expand="lg">
+            <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>e-commerce</Navbar.Brand>
                     </LinkContainer>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
+                    <Navbar.Toggle aria-controls='basic-navbar-nav' />
+                    <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
+                        <Nav className='mr-auto'>
                             <LinkContainer to='/cart'>
                                 <Nav.Link>
-                                    <i className="fas fa-shopping-cart"></i>
+                                    <i className='fas fa-shopping-cart'></i>
                                     Cart
                                 </Nav.Link>
                             </LinkContainer>
                             <LinkContainer to='/login'>
                                 <Nav.Link>
-                                    <i className="fas fa-shopping-cart"></i>
+                                    <i className='fas fa-shopping-cart'></i>
                                     Sign In
                                 </Nav.Link>
                             </LinkContainer>
