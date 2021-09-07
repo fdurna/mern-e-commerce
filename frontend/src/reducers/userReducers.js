@@ -12,7 +12,6 @@ export const userLoginReducer = (state={},action) => {
         case USER_LOGIN_REQUEST:
             return {
                 loading:true,
-                products:[]
             }
         case USER_LOGIN_SUCCESS:
             return {
