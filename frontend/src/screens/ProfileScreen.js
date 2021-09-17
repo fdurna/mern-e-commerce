@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { getUsersDetails } from '../actions/userAction'
+import { getUserDetails } from '../actions/userAction'
 
 const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState('')
@@ -12,8 +11,6 @@ const ProfileScreen = ({ location, history }) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState(null)
-
-    const redirect = location.search ? location.search.split('=')[1] : '/'
 
     const dispatch = useDispatch()
 
@@ -28,14 +25,13 @@ const ProfileScreen = ({ location, history }) => {
             history.push('/login')
         } else {
             if (!user.name) {
-                dispatch(getUsersDetails('profile'))
+                dispatch(getUserDetails('profile'))
             } else {
                 setName(user.name)
-                setName(user.email)
+                setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo])
-
+    }, [dispatch, history, userInfo,user])
     const submitHandler = (e) => {
         e.preventDefault()
         if (password !== confirmPassword) {
@@ -56,7 +52,7 @@ const ProfileScreen = ({ location, history }) => {
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                         type='name'
-                        placeHolder='Name'
+                        placeholder='Enter Name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     ></Form.Control>
@@ -66,7 +62,7 @@ const ProfileScreen = ({ location, history }) => {
                     <Form.Label>Email Adress</Form.Label>
                     <Form.Control
                         type='email'
-                        placeHolder='Enter email'
+                        placeholder='Enter email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     ></Form.Control>
@@ -75,7 +71,7 @@ const ProfileScreen = ({ location, history }) => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type='password'
-                        placeHolder='Enter password'
+                        placeholder='Enter password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     ></Form.Control>
@@ -84,7 +80,7 @@ const ProfileScreen = ({ location, history }) => {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                         type='password'
-                        placeHolder='Confirm password'
+                        placeholder='Confirm password'
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     ></Form.Control>
